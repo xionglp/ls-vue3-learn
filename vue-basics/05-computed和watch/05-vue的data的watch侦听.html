@@ -1,0 +1,51 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+
+  <div id="app">
+    <h2>{{message}}</h2>
+    <button @click="changeMessage">修改message</button>
+  </div>
+  
+  <script src="../lib/vue.js"></script>
+  <script>
+    // 1.创建app
+    const app = Vue.createApp({
+      // data: option api
+      data: function() {
+        return {
+          message: "Hello Vue",
+          info: { name: "xionglp", age: 18 }
+        }
+      },
+      methods: {
+        changeMessage() {
+          this.message = "hello xionglp"
+          this.info = { name: "kobe bryant" }
+        }
+      },
+      watch: {
+        message(newValue, oldValue) {
+          console.log("侦听message---", newValue, oldValue)
+        },
+        info(newValue, oldValue) {
+          // 如果侦听的是对象类型， 获取的是代理对象Proxy类型
+          console.log("侦听info----", newValue, oldValue)
+
+          // 获取原生对象
+          console.log({ ...newValue })
+          console.log(Vue.toRaw(oldValue))
+        }
+      }
+    })
+
+    // 2.挂载app
+    app.mount("#app")
+  </script>
+</body>
+</html>

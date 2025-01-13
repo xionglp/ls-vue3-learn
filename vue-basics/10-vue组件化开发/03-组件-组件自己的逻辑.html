@@ -1,0 +1,71 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .product {
+      background-color: orange;
+    }
+  </style>
+</head>
+<body>
+
+  <div id="app">
+    <h2>{{message}}</h2>
+
+    <home-nav></home-nav>
+    <home-nav></home-nav>
+
+    <product-item></product-item>
+    <product-item></product-item>
+    <product-item></product-item>
+  </div>
+
+  <template id="item">
+    <div class="product">
+      <h2>{{ title }}</h2>
+      <span>我是商品描述</span>
+      <div><span>商品价格: ￥{{ price }}</span></div>
+      <p>商品详细信息</p>
+      <button @click="favarItem">收藏</button>
+    </div>
+  </template>
+
+  <template id="homeNav">
+    <h3>我是商品顶部导航栏</h3>
+  </template>
+  
+  <script src="../lib/vue.js"></script>
+  <script>
+    const app = Vue.createApp({
+      data: function() {
+        return {
+          message: "Hello Vue"
+        }
+      },
+    })
+
+    app.component("product-item", {
+      template: "#item",
+      data: function() {
+        return {
+          title: "我是商品item",
+          price: 10.8
+        }
+      },
+      methods: {
+        favarItem() {
+          console.log("收藏当前商品item")
+        }
+      }
+    })
+
+    app.component("home-nav", {
+      template: "#homeNav"
+    })
+    app.mount("#app")
+  </script>
+</body>
+</html>

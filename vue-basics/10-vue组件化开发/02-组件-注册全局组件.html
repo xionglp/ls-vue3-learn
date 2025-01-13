@@ -1,0 +1,46 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .product {
+      background-color: orange;
+    }
+  </style>
+</head>
+<body>
+
+  <div id="app">
+    <h2>{{message}}</h2>
+    <product-item></product-item>
+    <product-item></product-item>
+    <product-item></product-item>
+  </div>
+
+  <template id="item">
+    <div class="product">
+      <h2>我是商品</h2>
+      <span>我是商品描述</span>
+      <div><span>商品价格: ￥6.7</span></div>
+      <p>商品详细信息</p>
+    </div>
+  </template>
+  
+  <script src="../lib/vue.js"></script>
+  <script>
+    const app = Vue.createApp({
+      data: function() {
+        return {
+          message: "Hello Vue"
+        }
+      },
+    })
+    app.component("product-item", {
+      template: "#item"
+    })
+    app.mount("#app")
+  </script>
+</body>
+</html>

@@ -1,0 +1,55 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+
+  <div id="app">
+    <!-- 1. lazy: 绑定change事件 -->
+    <input type="text" v-model.lazy="message">
+    <h3>message: {{ message }}</h3>
+
+    <!-- 2. number:  自动将内容转为数字-->
+    <input type="text" v-model.number="counter">
+    <h3>counter: {{ counter }} -- {{ typeof counter }}</h3>
+
+    <input type="number" v-model="counter2">
+    <h3>counter2: {{ counter2 }} -- {{ typeof counter2 }}</h3>
+
+    <!-- 3. trim: 去除首尾的空格 -->
+    <input type="text" v-model.trim="content">
+    <h3>content: {{ content }}</h3>
+
+    <!-- 4. 同时使用多个修饰符 -->
+    <input type="text" v-model.lazy.trim="content">
+    <h3>content: {{ content }}</h3>
+  </div>
+  
+  <script src="../lib/vue.js"></script>
+  <script>
+    // 1.创建app
+    const app = Vue.createApp({
+      // data: option api
+      data: function() {
+        return {
+          message: "Hello Vue",
+          counter: 0,
+          counter2: 1,
+          content: ""
+        }
+      },
+      watch: {
+        content(newValue) {
+          console.log(newValue)
+        }
+      }
+    })
+
+    // 2.挂载app
+    app.mount("#app")
+  </script>
+</body>
+</html>

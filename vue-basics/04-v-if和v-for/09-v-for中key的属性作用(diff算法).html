@@ -1,0 +1,35 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+
+  <div id="app">
+    <h2>{{message}}</h2>
+  </div>
+  
+  <script src="../lib/vue.js"></script>
+  <script>
+    // v-for中key的作用是什么？
+    // 1.key属性主要用在vue的虚拟DOM算法，在新旧node对比时辨识vnodes
+    // 2.如果不使用key，Vue会使用一种最大限度减少动态元素并且尽可能的就地修改或者复用相同类型元素的算法
+    // 3.而使用key时， 它会基于key的变化重新排列元素顺序，并且会移除或者销毁不存在的元素
+
+    // 1.创建app
+    const app = Vue.createApp({
+      // data: option api
+      data: function() {
+        return {
+          message: "Hello Vue"
+        }
+      },
+    })
+
+    // 2.挂载app
+    app.mount("#app")
+  </script>
+</body>
+</html>

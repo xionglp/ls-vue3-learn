@@ -1,0 +1,40 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+
+  <div id="app">
+    <h2>{{message}}</h2>
+  </div>
+  
+  <script src="../lib/vue.js"></script>
+  <script>
+    function foo() {
+      return "foo function"
+    }
+
+    // v-if 和 v-show 的区别
+    // 1.v-show 无论是否需要显示在浏览器上，它的DOM都是实际存在的， 只是通过CSS的display属性控制
+    // 2.v-if当条件为false，其对应的元素压根不会渲染到DOM中 
+    // 如果我们的元素需要在显示和隐藏之间频繁的切换，那么使用v-show
+    // 如果不会频繁的切换，那么是用v-if
+    
+    // 1.创建app
+    const app = Vue.createApp({
+      // data: option api
+      data: function() {
+        return {
+          message: "Hello Vue"
+        }
+      },
+    })
+
+    // 2.挂载app
+    app.mount("#app")
+  </script>
+</body>
+</html>

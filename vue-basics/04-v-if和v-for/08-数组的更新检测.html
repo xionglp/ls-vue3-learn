@@ -1,0 +1,48 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+
+  <div id="app">
+    <ul>
+      <li v-for="item in names">{{ item }}</li>
+    </ul>
+
+    <button @click="changeNames">修改数组</button>
+  </div>
+  
+  <script src="../lib/vue.js"></script>
+  <script>
+    // 1.创建app
+    const app = Vue.createApp({
+      // data: option api
+      data: function() {
+        return {
+          message: "Hello Vue",
+          names: ["abc", "cba", "nba", "aaa", "ccc"]
+        }
+      },
+      methods: {
+        changeNames() {
+          // this.names = ["xionglp", "coderwhy"]
+          // this.names.push("kobe")
+          // this.names.pop()
+          // this.names.splice(2, 1, "xionglp")
+          // this.names.reverse()
+          // this.names.sort()
+
+          // 不修改原数组的方法是不能侦听（watch）
+          this.names = this.names.map((item) => { return item + " xionglp" })
+        }
+      }
+    })
+
+    // 2.挂载app
+    app.mount("#app")
+  </script>
+</body>
+</html>
